@@ -33,28 +33,28 @@ def shuffle(maxNum):
 def solve(board, maxSol):
     solutions = [[[0] * 9 for _ in range(9)] for _ in range(maxSol)]
     inputsOrder = [[shuffle(9) for _ in range(9)] for _ in range(9)]
-    solNum = [0]
-    def bruteForce():
+
+    def bruteForce(solNum):
         for y in range(9):
             for x in range(9):
                 if board[y][x] == 0:
                     for n in inputsOrder[y][x]:
                         if possible(board, y, x, n):
                             board[y][x] = n
-                            if bruteForce():
+                            if bruteForce(solNum):
                                 board[y][x] = 0
                                 return True
                             board[y][x] = 0
                     return False
-        for i in range(solNum[0]):
+        for i in range(solNum):
             if solutions[i] == board: return False
         for y in range(9):
             for x in range(9):
-                solutions[solNum[0]][y][x] = board[y][x]
-        solNum[0] += 1
+                solutions[solNum][y][x] = board[y][x]
         return True
-    for _ in range(maxSol):
-        if not bruteForce(): return solutions
+
+    for i in range(maxSol):
+        if not bruteForce(i): return solutions
     return solutions
 
 def generate(numOfEmpty):
