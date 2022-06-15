@@ -1,2 +1,2 @@
-# Python-Sudoku-in-69-line
-Python Sudoku in 69 line
+this is a sudoku puzzle solver and generator in Python
+it has exactly 69 line and the longest lines have 69 charecters
