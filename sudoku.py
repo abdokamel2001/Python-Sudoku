@@ -64,6 +64,6 @@ def generate(numOfEmpty):
         board[(emptyCells[i] - 1) // 9][(emptyCells[i] - 1) % 9] = 0
     return board
 
-test = generate(40)          # generate a sudoku puzzle
-printBoard(test)             # print the puzzle
-printBoard(solve(test, 5))   # print 5 solutions
+puzzle = generate(40)          # generate a sudoku puzzle
+printBoard(puzzle)             # print the puzzle
+printBoard(solve(puzzle, 5))   # print 5 solutions
