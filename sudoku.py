@@ -1,10 +1,11 @@
 from random import sample
 
-
 def printBoard(board):
     if type(board[0][0]) != int:
         for i in range(len(board)):
-            if board[i] == [[0] * 9 for _ in range(9)]: break
+            if board[i] == [[0] * 9 for _ in range(9)]:
+                print("No more solutions\n")
+                return
             print(f"the solution num {i + 1} :")
             printBoard(board[i])
     else:
@@ -17,23 +18,23 @@ def printBoard(board):
             print("|")
         print("-" * 37, end = "\n" * 3)
 
-
 def possible(board, y, x, n):
     for i in range(9):
         if board[y][i] == n or board[i][x] == n: return False
+    y0 = 3 * (y // 3)
+    x0 = 3 * (x // 3)
     for i in range(3):
         for j in range(3):
-            if board[i + 3 * (y // 3)][j + 3 * (x // 3)] == n:
-                return False
+            if board[i + y0][j + x0] == n: return False
     return True
 
 def shuffle(maxNum):
     return sample([i + 1 for i in range(maxNum)], maxNum)
 
-
 def solve(board, maxSol):
     solutions = [[[0] * 9 for _ in range(9)] for _ in range(maxSol)]
     inputsOrder = [[shuffle(9) for _ in range(9)] for _ in range(9)]
+
     def bruteForce(solNum):
         for y in range(9):
             for x in range(9):
@@ -51,10 +52,10 @@ def solve(board, maxSol):
         for y in range(9):
             for x in range(9): solutions[solNum][y][x] = board[y][x]
         return True
+
     for i in range(maxSol):
         if not bruteForce(i): break
     return solutions
-
 
 def generate(numOfEmpty):
     board = solve([[0] * 9 for _ in range(9)], 1)[0]
@@ -62,7 +63,6 @@ def generate(numOfEmpty):
     for i in range(numOfEmpty):
         board[(emptyCells[i] - 1) // 9][(emptyCells[i] - 1) % 9] = 0
     return board
-
 
 puzzle = generate(40)          # generate a sudoku puzzle
 printBoard(puzzle)             # print the puzzle
