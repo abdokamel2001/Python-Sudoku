@@ -1,4 +1,10 @@
-This is a sudoku puzzle solver and generator in Python.<br/>
-You can generate random sudoku puzzles and change the number of empty cells in it.<br/>
-It can solve puzzles with multiple solutions and you can set the maximum number of them.<br/>
-If the number is bigger than possible it only shows the maximum possible solutions.
+# Sudoku Solver and Generator
+
+This repository contains a Python program that can generate and solve Sudoku puzzles.<br>
+The user can specify the number of empty cells in the puzzle,<br>
+and the program will find and print the solutions for the puzzle up to a given maximum number of solutions.
+<br><br>
+
+# Getting Started
+To use the program, you will need Python installed on your machine.<br>
+Simply run the "sudoku.py" script in your terminal and follow the prompts to generate and solve a puzzle.
