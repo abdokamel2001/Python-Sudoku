@@ -1,4 +1,4 @@
-# Sudoku Solver and Generator
+# Sudoku Solver and Generator in Python
 
 This repository contains a Python program that can generate and solve Sudoku puzzles.<br>
 The user can specify the number of empty cells in the puzzle , and the program will find<br>
